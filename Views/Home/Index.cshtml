@@ -1,8 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Головна";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="text-center py-5">
+    <p class="text-uppercase text-muted">Лабораторна робота №1 · ASP.NET Core MVC</p>
+    <h1 class="display-4">@Model.Greeting</h1>
+    <p class="lead mt-4">Система керування замовленнями</p>
+    <div class="card mx-auto my-4 shadow-sm" style="max-width: 540px;">
+        <div class="card-body p-4">
+            <h2 class="h5">Поточний час сервера (UTC)</h2>
+            <time class="fs-3" datetime="@Model.CurrentTime.ToString("O")">@Model.CurrentTime.ToString("dd.MM.yyyy HH:mm:ss")</time>
+            <p class="text-muted mt-2 mb-0">Час отримано через ITimeService та Dependency Injection.</p>
+        </div>
+    </div>
+    <a class="btn btn-primary btn-lg" href="/Products">Перейти до товарів</a>
+</section>
