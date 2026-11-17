@@ -1,21 +1,22 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using OrderSystem.Models;
+using OrderSystem.Services;
 
 namespace OrderSystem.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ITimeService _timeService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ITimeService timeService)
     {
-        _logger = logger;
+        _timeService = timeService;
     }
 
     public IActionResult Index()
     {
-        return View();
+        return View(new HomeViewModel("Вітаємо в OrderSystem!", _timeService.GetCurrentTime()));
     }
 
     public IActionResult Privacy()
